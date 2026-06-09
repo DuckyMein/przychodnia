@@ -8,9 +8,10 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 {
     // Encje domenowe
     public DbSet<Patient> Patients { get; set; } = null!;
+    public DbSet<MedicalRecord> MedicalRecords { get; set; } = null!;
+    public DbSet<AuditLog> AuditLogs { get; set; } = null!;
 
     // W przyszłości:
-    // public DbSet<MedicalRecord> MedicalRecords { get; set; }
     // public DbSet<Visit> Visits { get; set; }
     // public DbSet<Procedure> Procedures { get; set; }
     // public DbSet<Medication> Medications { get; set; }

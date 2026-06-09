@@ -27,6 +27,7 @@ public class PatientsController : ControllerBase
     /// GET /api/patients – lista wszystkich pacjentów
     /// </summary>
     [HttpGet]
+    [ProducesResponseType(typeof(List<PatientDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<List<PatientDto>>> GetAll()
     {
         var patients = await _patientService.GetAllAsync();
@@ -37,6 +38,8 @@ public class PatientsController : ControllerBase
     /// GET /api/patients/{id} – szczegóły pacjenta
     /// </summary>
     [HttpGet("{id:guid}")]
+    [ProducesResponseType(typeof(PatientDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<PatientDto>> GetById(Guid id)
     {
         var patient = await _patientService.GetByIdAsync(id);
@@ -51,6 +54,8 @@ public class PatientsController : ControllerBase
     /// GET /api/patients/search?pesel=...&lastName=... – wyszukiwanie pacjentów
     /// </summary>
     [HttpGet("search")]
+    [ProducesResponseType(typeof(List<PatientListResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<List<PatientListResponse>>> Search(
         [FromQuery] string? pesel,
         [FromQuery] string? lastName)
@@ -68,6 +73,8 @@ public class PatientsController : ControllerBase
     /// POST /api/patients – tworzenie nowego pacjenta
     /// </summary>
     [HttpPost]
+    [ProducesResponseType(typeof(PatientDto), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<PatientDto>> Create([FromBody] CreatePatientRequest request)
     {
         if (!ModelState.IsValid)
@@ -85,6 +92,9 @@ public class PatientsController : ControllerBase
     /// PUT /api/patients/{id} – aktualizacja pacjenta
     /// </summary>
     [HttpPut("{id:guid}")]
+    [ProducesResponseType(typeof(PatientDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<PatientDto>> Update(Guid id, [FromBody] CreatePatientRequest request)
     {
         if (!ModelState.IsValid)
@@ -107,6 +117,8 @@ public class PatientsController : ControllerBase
     /// DELETE /api/patients/{id} – soft delete pacjenta
     /// </summary>
     [HttpDelete("{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete(Guid id)
     {
         try

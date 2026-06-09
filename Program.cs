@@ -13,6 +13,10 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 // Rejestracja serwisów domenowych
 builder.Services.AddScoped<IPatientService, PatientService>();
+builder.Services.AddScoped<IMedicalRecordService, MedicalRecordService>();
+
+// Dostęp do HttpContext (potrzebny do audytu RODO – identyfikacja użytkownika)
+builder.Services.AddHttpContextAccessor();
 
 // dodałem Role, wyłączyłem wymóg potwierdzenia email (development)
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
