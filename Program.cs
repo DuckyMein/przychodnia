@@ -14,6 +14,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 // Rejestracja serwisów domenowych
 builder.Services.AddScoped<IPatientService, PatientService>();
 builder.Services.AddScoped<IMedicalRecordService, MedicalRecordService>();
+builder.Services.AddScoped<IVisitService, VisitService>();
 
 // Dostęp do HttpContext (potrzebny do audytu RODO – identyfikacja użytkownika)
 builder.Services.AddHttpContextAccessor();
