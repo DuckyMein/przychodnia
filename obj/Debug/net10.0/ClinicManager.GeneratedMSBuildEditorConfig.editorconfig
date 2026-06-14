@@ -19,97 +19,101 @@ build_property.TargetFrameworkIdentifier = .NETCoreApp
 build_property.TargetFrameworkVersion = v10.0
 build_property.RootNamespace = ClinicManager
 build_property.RootNamespace = ClinicManager
-build_property.ProjectDir = C:\Users\Bartosz\source\repos\projekt\ClinicManager\
+build_property.ProjectDir = C:\Users\tatar\source\repos\wtatarek\przychodnia\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Bartosz\source\repos\projekt\ClinicManager
+build_property.MSBuildProjectDirectory = C:\Users\tatar\source\repos\wtatarek\przychodnia
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/Error.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/Index.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/MedicalRecords/Create.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/MedicalRecords/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVkaWNhbFJlY29yZHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/MedicalRecords/Delete.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/MedicalRecords/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVkaWNhbFJlY29yZHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/MedicalRecords/Edit.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/MedicalRecords/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVkaWNhbFJlY29yZHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/MedicalRecords/Index.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/MedicalRecords/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVkaWNhbFJlY29yZHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/Patients/Create.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Patients/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF0aWVudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/Patients/Delete.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Patients/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF0aWVudHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/Patients/Edit.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Patients/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF0aWVudHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/Patients/Index.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Patients/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF0aWVudHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/Privacy.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/Shared/_LoginPartial.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Procedures/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvY2VkdXJlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/Visits/Cancel.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Visits/Cancel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlzaXRzXENhbmNlbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/Visits/Create.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Visits/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlzaXRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/Visits/Edit.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Visits/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlzaXRzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/Visits/Index.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Visits/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlzaXRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/_ViewImports.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/_ViewStart.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bartosz/source/repos/projekt/ClinicManager/Pages/Shared/_Layout.cshtml]
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-upkziy4h7b

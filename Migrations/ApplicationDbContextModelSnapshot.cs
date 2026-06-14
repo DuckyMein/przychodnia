@@ -127,6 +127,26 @@ namespace ClinicManager.Migrations
                     b.ToTable("Patients", (string)null);
                 });
 
+            modelBuilder.Entity("ClinicManager.Models.Procedure", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWSEQUENTIALID()");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<decimal>("ServiceCost")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Procedures", (string)null);
+                });
+
             modelBuilder.Entity("ClinicManager.Models.Visit", b =>
                 {
                     b.Property<Guid>("Id")

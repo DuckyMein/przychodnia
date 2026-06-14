@@ -25,5 +25,6 @@
     <EmbeddedResource Remove="Tests\**" />
     <None Remove="Tests\**" />
   </ItemGroup>
+ 
 
 </Project>

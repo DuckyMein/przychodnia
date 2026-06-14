@@ -37,6 +37,8 @@ builder.Services.AddRazorPages();
 // Rejestracja kontrolerów API (PatientsController, VisitsController, ...)
 builder.Services.AddControllers();
 
+builder.Services.AddScoped<IProcedureService, ProcedureService>();
+
 // Swagger / OpenAPI – dokumentacja endpointów z autoryzacją przez cookie
 builder.Services.AddSwaggerGen(options =>
 {
