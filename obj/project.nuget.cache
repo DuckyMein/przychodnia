@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JYUKugPGf0c=",
+  "dgSpecHash": "qG/0uyR2MvI=",
   "success": true,
   "projectFilePath": "C:\\Users\\tatar\\source\\repos\\wtatarek\\przychodnia\\ClinicManager.csproj",
   "expectedPackageFiles": [
@@ -47,6 +47,7 @@
     "C:\\Users\\tatar\\.nuget\\packages\\nlog\\5.4.0\\nlog.5.4.0.nupkg.sha512",
     "C:\\Users\\tatar\\.nuget\\packages\\nlog.extensions.logging\\5.4.0\\nlog.extensions.logging.5.4.0.nupkg.sha512",
     "C:\\Users\\tatar\\.nuget\\packages\\nlog.web.aspnetcore\\5.4.0\\nlog.web.aspnetcore.5.4.0.nupkg.sha512",
+    "C:\\Users\\tatar\\.nuget\\packages\\questpdf\\2026.6.0\\questpdf.2026.6.0.nupkg.sha512",
     "C:\\Users\\tatar\\.nuget\\packages\\riok.mapperly\\4.3.0\\riok.mapperly.4.3.0.nupkg.sha512",
     "C:\\Users\\tatar\\.nuget\\packages\\swashbuckle.aspnetcore\\8.0.0\\swashbuckle.aspnetcore.8.0.0.nupkg.sha512",
     "C:\\Users\\tatar\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\8.0.0\\swashbuckle.aspnetcore.swagger.8.0.0.nupkg.sha512",

@@ -25,6 +25,7 @@ builder.Services.AddScoped<IPrescriptionService, PrescriptionService>();
 builder.Services.AddScoped<IClinicalNoteService, ClinicalNoteService>();
 // Dostęp do HttpContext (potrzebny do audytu RODO – identyfikacja użytkownika)
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IReportService, ReportService>();
 
 // dodałem Role, wyłączyłem wymóg potwierdzenia email (development)
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>

@@ -1,0 +1,53 @@
+﻿@page
+@model ClinicManager.Pages.Reports.IndexModel
+@{
+    ViewData["Title"] = "Raporty Finansowe";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0" style="max-width: 700px; margin: 0 auto;">
+        <div class="card-header bg-dark text-white">
+            <h4 class="mb-0">📄 Wygeneruj Raport Kosztów</h4>
+        </div>
+        <div class="card-body p-4">
+            <form method="post" asp-page-handler="Download">
+                
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Wybierz pacjenta (Opcjonalnie)</label>
+                    <select asp-for="SelectedPatientId" asp-items="Model.Patients" class="form-select">
+                        <option value="">-- Wszyscy pacjenci --</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Wybierz lekarza (Opcjonalnie)</label>
+                    <select asp-for="SelectedDoctorId" asp-items="Model.Doctors" class="form-select">
+                        <option value="">-- Wszyscy lekarze --</option>
+                    </select>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Rok</label>
+                        <select asp-for="SelectedYear" asp-items="Model.Years" class="form-select">
+                            <option value="">-- Cały czas --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Miesiąc</label>
+                        <select asp-for="SelectedMonth" asp-items="Model.Months" class="form-select">
+                            <option value="">-- Cały rok --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="d-grid mt-2">
+                    <button type="submit" class="btn btn-primary btn-lg fw-bold">
+                        Pobierz Raport PDF
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
