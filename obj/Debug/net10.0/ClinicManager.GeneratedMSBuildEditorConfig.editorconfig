@@ -58,6 +58,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVkaWNhbFJlY29yZHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Medications/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVkaWNhdGlvbnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Medications/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVkaWNhdGlvbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Patients/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF0aWVudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -74,8 +82,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF0aWVudHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Prescriptions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJlc2NyaXB0aW9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Prescriptions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJlc2NyaXB0aW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Procedures/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvY2VkdXJlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tatar/source/repos/wtatarek/przychodnia/Pages/Procedures/Index.cshtml]

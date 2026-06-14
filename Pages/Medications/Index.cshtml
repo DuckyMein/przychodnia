@@ -1,0 +1,58 @@
+﻿@page
+@inject ClinicManager.Services.IMedicationService MedicationService
+@using ClinicManager.DTOs
+@attribute [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin,Lekarz")]
+
+@{
+    ViewData["Title"] = "Katalog Leków";
+    var medications = await MedicationService.GetAllAsync();
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="mb-1">💊 Katalog Leków</h2>
+            <small class="text-muted">Słownik preparatów dostępnych do wystawiania na receptach</small>
+        </div>
+        <a asp-page="./Create" class="btn btn-primary shadow-sm">
+            ➕ Dodaj nowy lek
+        </a>
+    </div>
+
+    @if (medications == null || !medications.Any())
+    {
+        <div class="alert alert-info shadow-sm" role="alert">
+            Baza leków jest pusta. Dodaj pierwszy preparat.
+        </div>
+    }
+    else
+    {
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped mb-0 align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Nazwa handlowa</th>
+                                <th>Składnik aktywny</th>
+                                <th>Postać</th>
+                                <th>Dawka</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in medications)
+                            {
+                                <tr>
+                                    <td class="fw-bold text-primary">@item.Name</td>
+                                    <td class="text-muted">@item.ActiveIngredient</td>
+                                    <td><span class="badge bg-secondary">@item.Form</span></td>
+                                    <td class="fw-bold">@item.Strength</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>

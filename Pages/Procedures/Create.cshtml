@@ -1,0 +1,52 @@
+﻿@page
+@inject ClinicManager.Services.IProcedureService ProcedureService
+@using ClinicManager.DTOs
+@using Microsoft.AspNetCore.Mvc
+@attribute [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin,Rejestratorka")]
+
+@functions {
+    // Wiążemy dane z formularza z obiektem DTO
+    [BindProperty]
+    public CreateProcedureRequest RequestData { get; set; } = new();
+
+    // Ta metoda odpala się, gdy klikniesz "Zapisz do bazy"
+    public async Task<IActionResult> OnPostAsync()
+    {
+        if (!ModelState.IsValid)
+        {
+            return Page(); // Jeśli ktoś pominął pole, wracamy do formularza
+        }
+        
+        // Zapis przez serwis do bazy
+        await ProcedureService.CreateAsync(RequestData);
+        
+        // Powrót do głównej tabelki
+        return RedirectToPage("./Index");
+    }
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0" style="max-width: 600px; margin: 0 auto;">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">➕ Dodaj nową procedurę</h4>
+        </div>
+        <div class="card-body p-4">
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Opis zabiegu</label>
+                    <input asp-for="RequestData.Description" class="form-control" required placeholder="np. Konsultacja kardiologiczna" />
+                </div>
+                
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Koszt usługi (PLN)</label>
+                    <input asp-for="RequestData.ServiceCost" type="number" step="0.01" class="form-control" required placeholder="np. 150.00" />
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-page="./Index" class="btn btn-outline-secondary">Powrót do listy</a>
+                    <button type="submit" class="btn btn-success fw-bold">Zapisz do bazy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
