@@ -1,0 +1,69 @@
+﻿@page
+@inject ClinicManager.Services.IPrescriptionService PrescriptionService
+@attribute [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin,Lekarz,Rejestratorka")]
+
+@{
+    ViewData["Title"] = "Wystawione Recepty";
+    var prescriptions = await PrescriptionService.GetAllAsync();
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="mb-1">📝 Wystawione Recepty</h2>
+            <small class="text-muted">Rejestr e-recept i przepisanych leków</small>
+        </div>
+        @if (User.IsInRole("Admin") || User.IsInRole("Lekarz"))
+        {
+            <a asp-page="./Create" class="btn btn-primary shadow-sm">
+                ➕ Wystaw nową receptę
+            </a>
+        }
+    </div>
+
+    @if (prescriptions == null || !prescriptions.Any())
+    {
+        <div class="alert alert-info shadow-sm" role="alert">
+            Brak wystawionych recept w systemie.
+        </div>
+    }
+    else
+    {
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped mb-0 align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Kod PIN</th>
+                                <th>Pacjent</th>
+                                <th>Data wystawienia</th>
+                                <th>Przepisane leki</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in prescriptions)
+                            {
+                                <tr>
+                                    <td>
+                                        <span class="badge bg-danger fs-5 px-3 py-2">@item.AccessCode</span>
+                                    </td>
+                                    <td class="fw-bold">@item.PatientName</td>
+                                    <td class="text-muted">@item.IssueDate.ToString("dd.MM.yyyy")</td>
+                                    <td>
+                                        <ul class="mb-0 ps-3">
+                                            @foreach (var lek in item.Items)
+                                            {
+                                                <li><strong>@lek.MedicationName</strong> - @lek.Dosage (@lek.Quantity op.)</li>
+                                            }
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>

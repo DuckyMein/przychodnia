@@ -1,7 +1,75 @@
 ﻿@page
-@model ClinicManager.Pages.Procedures.IndexModel
+@inject ClinicManager.Services.IProcedureService ProcedureService
+@using ClinicManager.DTOs
+@attribute [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin,Rejestratorka,Lekarz")]
+
 @{
     ViewData["Title"] = "Lista Procedur";
+    
+    // Pobieramy dane bezpośrednio z serwisu bazy danych
+    var procedures = await ProcedureService.GetAllAsync();
 }
-<h1>Lista Procedur</h1>
-<p>Hura! Udało się dotrzeć na nową stronę!</p>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="mb-1">🩺 Słownik Procedur Medycznych</h2>
+            <small class="text-muted">Zarządzanie cennikiem i listą zabiegów w klinice</small>
+        </div>
+        
+        @if (User.IsInRole("Admin") || User.IsInRole("Rejestratorka"))
+        {
+            <a asp-page="./Create" class="btn btn-primary shadow-sm">
+                ➕ Dodaj nową procedurę
+            </a>
+        }
+    </div>
+
+    @if (procedures == null || !procedures.Any())
+    {
+        <div class="alert alert-info shadow-sm" role="alert">
+            Brak zdefiniowanych procedur w bazie danych. Dodaj pierwszą procedurę, aby wyświetlić cennik.
+        </div>
+    }
+    else
+    {
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped mb-0 align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Opis zabiegu</th>
+                                <th>Koszt usługi</th>
+                                @if (User.IsInRole("Admin") || User.IsInRole("Rejestratorka"))
+                                {
+                                    <th class="text-end px-4">Akcje</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in procedures)
+                            {
+                                <tr>
+                                    <td class="fw-bold text-dark text-truncate" style="max-width: 500px;">@item.Description</td>
+                                    <td>
+                                        <span class="badge bg-success p-2 fs-6">@item.ServiceCost.ToString("C")</span>
+                                    </td>
+                                    @if (User.IsInRole("Admin") || User.IsInRole("Rejestratorka"))
+                                    {
+                                        <td class="text-end px-4">
+                                            <div class="btn-group btn-group-sm">
+                                                <a href="#" class="btn btn-outline-warning">Edytuj</a>
+                                                <a href="#" class="btn btn-outline-danger">Usuń</a>
+                                            </div>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>

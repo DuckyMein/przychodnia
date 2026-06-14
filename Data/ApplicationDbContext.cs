@@ -12,9 +12,12 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<AuditLog> AuditLogs { get; set; } = null!;
     public DbSet<Visit> Visits { get; set; } = null!;
     public DbSet<Procedure> Procedures { get; set; } = null!;
+    public DbSet<Medication> Medications { get; set; }
+    public DbSet<Prescription> Prescriptions { get; set; }
+    public DbSet<PrescriptionItem> PrescriptionItems { get; set; }
 
     // W przyszłości:
-   
+
     // public DbSet<Medication> Medications { get; set; }
     // public DbSet<ClinicalNote> ClinicalNotes { get; set; }
     // public DbSet<ProcedurePerformed> ProceduresPerformed { get; set; }

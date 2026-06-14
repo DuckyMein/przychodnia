@@ -1,0 +1,55 @@
+﻿@page
+@inject ClinicManager.Services.IMedicationService MedicationService
+@using ClinicManager.DTOs
+@using Microsoft.AspNetCore.Mvc
+@attribute [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin,Lekarz")]
+
+@functions {
+    [BindProperty]
+    public CreateMedicationRequest RequestData { get; set; } = new();
+
+    public async Task<IActionResult> OnPostAsync()
+    {
+        if (!ModelState.IsValid) return Page();
+        
+        await MedicationService.CreateAsync(RequestData);
+        return RedirectToPage("./Index");
+    }
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0" style="max-width: 600px; margin: 0 auto;">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">➕ Dodaj nowy lek</h4>
+        </div>
+        <div class="card-body p-4">
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Nazwa handlowa</label>
+                    <input asp-for="RequestData.Name" class="form-control" required placeholder="np. Apap, Amotaks" />
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Składnik aktywny</label>
+                    <input asp-for="RequestData.ActiveIngredient" class="form-control" required placeholder="np. Paracetamolum" />
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Postać leku</label>
+                        <input asp-for="RequestData.Form" class="form-control" required placeholder="np. Tabletki, Syrop" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Dawka / Moc</label>
+                        <input asp-for="RequestData.Strength" class="form-control" required placeholder="np. 500 mg" />
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-page="./Index" class="btn btn-outline-secondary">Powrót do listy</a>
+                    <button type="submit" class="btn btn-success fw-bold">Zapisz do słownika</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

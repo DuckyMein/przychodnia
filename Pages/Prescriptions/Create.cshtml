@@ -1,0 +1,108 @@
+﻿@page
+@inject ClinicManager.Services.IPrescriptionService PrescriptionService
+@inject ClinicManager.Data.ApplicationDbContext DbContext
+@using ClinicManager.DTOs
+@using Microsoft.AspNetCore.Mvc
+@using Microsoft.EntityFrameworkCore
+@attribute [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin,Lekarz")]
+
+@functions {
+    [BindProperty]
+    public CreatePrescriptionRequest RequestData { get; set; } = new();
+
+    public async Task<IActionResult> OnPostAsync()
+    {
+        // Minimalna walidacja - musi być pacjent i chociaż jeden lek
+        if (RequestData.PatientId == Guid.Empty || !RequestData.Items.Any()) 
+        {
+            return Page();
+        }
+        
+        await PrescriptionService.CreateAsync(RequestData);
+        return RedirectToPage("./Index");
+    }
+}
+
+@{
+    // Pobieramy dane do list rozwijanych (dropdownów) prosto z bazy
+    var patients = await DbContext.Patients.OrderBy(p => p.LastName).ToListAsync();
+    var medications = await DbContext.Medications.OrderBy(m => m.Name).ToListAsync();
+}
+
+<div class="container mt-4 mb-5">
+    <div class="card shadow-sm border-0" style="max-width: 800px; margin: 0 auto;">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">➕ Wystaw nową e-Receptę</h4>
+        </div>
+        <div class="card-body p-4">
+            <form method="post" id="prescriptionForm">
+                
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Wybierz pacjenta</label>
+                    <select asp-for="RequestData.PatientId" class="form-select" required>
+                        <option value="">-- Wybierz pacjenta z listy --</option>
+                        @foreach(var p in patients)
+                        {
+                            <option value="@p.Id">@p.LastName @p.FirstName</option>
+                        }
+                    </select>
+                </div>
+
+                <hr />
+                <h5 class="mb-3 text-primary">Przepisane leki</h5>
+                
+                <div id="medicationsContainer">
+                    <div class="row mb-3 medication-row">
+                        <div class="col-md-5">
+                            <label class="form-label small fw-bold">Lek z katalogu</label>
+                            <select name="RequestData.Items[0].MedicationId" class="form-select" required>
+                                <option value="">-- Wybierz lek --</option>
+                                @foreach(var m in medications)
+                                {
+                                    <option value="@m.Id">@m.Name (@m.Strength, @m.Form)</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-5">
+                            <label class="form-label small fw-bold">Dawkowanie</label>
+                            <input name="RequestData.Items[0].Dosage" class="form-control" required placeholder="np. 1x rano" />
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label small fw-bold">Ilość</label>
+                            <input name="RequestData.Items[0].Quantity" type="number" min="1" value="1" class="form-control" required />
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-sm btn-outline-primary mb-4" onclick="addMedicationRow()">
+                    + Dodaj kolejny lek do recepty
+                </button>
+
+                <div class="d-flex justify-content-between mt-2 pt-3 border-top">
+                    <a asp-page="./Index" class="btn btn-outline-secondary">Anuluj</a>
+                    <button type="submit" class="btn btn-success fw-bold px-4">Generuj e-Receptę (PIN)</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    let rowCount = 1;
+    function addMedicationRow() {
+        const container = document.getElementById('medicationsContainer');
+        const firstRow = container.querySelector('.medication-row');
+        const newRow = firstRow.cloneNode(true);
+        
+        // Aktualizacja indeksów (żeby C# poprawnie odczytał listę)
+        newRow.innerHTML = newRow.innerHTML.replace(/Items\[0\]/g, `Items[${rowCount}]`);
+        
+        // Czyszczenie wartości w sklonowanych polach
+        const inputs = newRow.querySelectorAll('input');
+        inputs[0].value = ''; // dawkowanie
+        inputs[1].value = '1'; // ilość
+        
+        container.appendChild(newRow);
+        rowCount++;
+    }
+</script>
