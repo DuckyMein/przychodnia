@@ -16,6 +16,8 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<Prescription> Prescriptions { get; set; }
     public DbSet<PrescriptionItem> PrescriptionItems { get; set; }
 
+    public DbSet<ClinicalNote> ClinicalNotes { get; set; }
+
     // W przyszłości:
 
     // public DbSet<Medication> Medications { get; set; }

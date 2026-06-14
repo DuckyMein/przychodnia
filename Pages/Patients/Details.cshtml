@@ -1,0 +1,110 @@
+﻿@page "{id:guid}"
+@inject ClinicManager.Data.ApplicationDbContext DbContext
+@inject ClinicManager.Services.IClinicalNoteService NoteService
+@using ClinicManager.DTOs
+@using Microsoft.AspNetCore.Mvc
+@using Microsoft.EntityFrameworkCore
+@attribute [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin,Lekarz")]
+
+@functions {
+    // Pobiera ID pacjenta prosto z adresu URL
+    [BindProperty(SupportsGet = true)]
+    public Guid Id { get; set; }
+
+    [BindProperty]
+    public CreateClinicalNoteRequest NewNote { get; set; } = new();
+
+    public ClinicManager.Models.Patient? PatientData { get; set; }
+    public IEnumerable<ClinicalNoteDto> Notes { get; set; } = new List<ClinicalNoteDto>();
+
+    // Odpala się przy wejściu na stronę
+    public async Task<IActionResult> OnGetAsync()
+    {
+        PatientData = await DbContext.Patients.FirstOrDefaultAsync(p => p.Id == Id);
+        if (PatientData == null) return NotFound();
+
+        Notes = await NoteService.GetByPatientIdAsync(Id);
+        return Page();
+    }
+
+    // Odpala się po kliknięciu "Zapisz notatkę"
+    public async Task<IActionResult> OnPostAsync()
+    {
+        if (!string.IsNullOrWhiteSpace(NewNote.Content))
+        {
+            NewNote.PatientId = Id;
+            await NoteService.CreateAsync(NewNote);
+        }
+        return RedirectToPage(new { id = Id }); // Odświeża stronę
+    }
+}
+
+@if (PatientData == null)
+{
+    <div class="alert alert-danger">Nie znaleziono pacjenta.</div>
+}
+else
+{
+    <div class="container mt-4 mb-5">
+        
+        <div class="card shadow-sm border-0 mb-4 bg-light">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                    <h3 class="mb-0 text-primary">👤 @PatientData.FirstName @PatientData.LastName</h3>
+                    <small class="text-muted">Karta pacjenta / Elektroniczna Dokumentacja Medyczna</small>
+                </div>
+                <a asp-page="./Index" class="btn btn-outline-secondary btn-sm">Powrót do listy</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-5 mb-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">✍️ Wpis z dzisiejszej wizyty</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold small">Wywiad, badanie fizykalne, zalecenia</label>
+                                <textarea asp-for="NewNote.Content" class="form-control" rows="8" required placeholder="Wprowadź treść notatki klinicznej..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100 fw-bold">Zapisz w karcie pacjenta</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7 mb-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">📚 Historia leczenia (Notatki)</h5>
+                    </div>
+                    <div class="card-body p-0" style="max-height: 500px; overflow-y: auto;">
+                        @if (!Notes.Any())
+                        {
+                            <div class="p-4 text-center text-muted">
+                                Brak wpisów w historii chorób tego pacjenta.
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="list-group list-group-flush">
+                                @foreach (var note in Notes)
+                                {
+                                    <div class="list-group-item p-4">
+                                        <div class="d-flex w-100 justify-content-between mb-2">
+                                            <small class="text-muted fw-bold">📅 @note.CreatedAt.ToString("dd.MM.yyyy HH:mm")</small>
+                                            <span class="badge bg-secondary">Wpis automatyczny</span>
+                                        </div>
+                                        <p class="mb-1" style="white-space: pre-wrap;">@note.Content</p>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

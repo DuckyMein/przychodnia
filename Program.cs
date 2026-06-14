@@ -22,6 +22,7 @@ builder.Services.AddScoped<IMedicalRecordService, MedicalRecordService>();
 builder.Services.AddScoped<IVisitService, VisitService>();
 builder.Services.AddScoped<IMedicationService, MedicationService>();
 builder.Services.AddScoped<IPrescriptionService, PrescriptionService>();
+builder.Services.AddScoped<IClinicalNoteService, ClinicalNoteService>();
 // Dostęp do HttpContext (potrzebny do audytu RODO – identyfikacja użytkownika)
 builder.Services.AddHttpContextAccessor();
 
